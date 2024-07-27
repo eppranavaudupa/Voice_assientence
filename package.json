@@ -1,0 +1,23 @@
+{
+  "name": "say",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.11.4",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "ngrok": "^5.0.0-beta.2",
+    "node": "^21.7.1",
+    "openai": "^4.51.0",
+    "say": "^0.16.0",
+    "speech-to-text": "^2.9.1"
+  }
+}

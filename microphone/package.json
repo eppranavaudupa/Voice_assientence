@@ -1,0 +1,16 @@
+{
+  "name": "microphone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pranava",
+  "license": "ISC",
+  "dependencies": {
+    "node-microphone": "^0.1.6",
+    "speech": "^0.2.1",
+    "speech-to-text": "^2.9.1"
+  }
+}

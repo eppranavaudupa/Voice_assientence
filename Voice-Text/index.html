@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice to Text</title>
+</head>
+<body>
+    <div class="v_t">
+        <textarea id="convert_text"></textarea>
+        <button id="v_tbtn">Voice to Text</button>
+        <button id="sendData">Send Data</button>
+    </div>
+</body>
+<script>
+    v_tbtn.addEventListener("click", function () {
+    var speech = true;
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.interimResults = true;
+
+    recognition.addEventListener('result', e => {
+        var transcript = Array.from(e.results)
+            .map(result => result[0])
+            .map(result => result.transcript)
+            .join('');
+        convert_text.value = transcript;
+        console.log(transcript);
+    });
+
+    recognition.addEventListener('start', () => {
+        console.log("I am listening to you");
+    });
+
+    recognition.addEventListener('error', (event) => {
+        console.error("An error occurred: " + event.error);
+        console.log("I am not able to listen");
+    });
+
+    recognition.addEventListener('end', () => {
+        console.log("Speech recognition service disconnected");
+    });
+
+    if (speech === true) {
+        recognition.start();
+    }
+});
+
+    sendData.addEventListener("click", function() {
+        const data = {
+            text: convert_text.value
+        };
+
+        fetch('test', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+</html>
